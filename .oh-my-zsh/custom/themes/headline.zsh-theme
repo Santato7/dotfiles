@@ -27,7 +27,8 @@ blue=$'\e[34m'
 magenta=$'\e[35m'
 cyan=$'\e[36m'
 white=$'\e[37m'
-light_black=$'\e[90m'
+light_black=$'\e[95m'
+# light_black=$'\e[90m'
 light_red=$'\e[91m'
 light_green=$'\e[92m'
 light_yellow=$'\e[93m'
@@ -81,7 +82,7 @@ HEADLINE_GIT_STATUS_CMD='headline_git_status'
 
 # Info symbols (optional)
 HEADLINE_USER_PREFIX=' ' # consider " "
-HEADLINE_HOST_PREFIX='' # consider " "
+HEADLINE_HOST_PREFIX='󰇅 ' # consider " "
 # HEADLINE_HOST_PREFIX=' '
 HEADLINE_PATH_PREFIX=' ' # consider " "
 HEADLINE_BRANCH_PREFIX=' ' # consider " "
@@ -89,11 +90,11 @@ HEADLINE_BRANCH_PREFIX=' ' # consider " "
 # Info joints
 HEADLINE_USER_BEGIN=''
 if [ $IS_SSH = 0 ]; then HEADLINE_USER_BEGIN='=> '; fi
-HEADLINE_USER_TO_HOST='@'
-HEADLINE_HOST_TO_PATH=': '
+HEADLINE_USER_TO_HOST=' at '
+HEADLINE_HOST_TO_PATH=' in '
 HEADLINE_PATH_TO_BRANCH=' | ' # only used when no padding between <path> and <branch>
 HEADLINE_PATH_TO_PAD='' # used if padding between <path> and <branch>
-HEADLINE_PAD_TO_BRANCH='' # used if padding between <path> and <branch>
+HEADLINE_PAD_TO_BRANCH=' on ' # used if padding between <path> and <branch>
 HEADLINE_BRANCH_TO_STATUS=' ['
 HEADLINE_STATUS_TO_STATUS='' # between each status section, consider "]"
 HEADLINE_STATUS_END=']'
