@@ -70,7 +70,10 @@ ZSH_THEME="headline"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  git
+  asdf
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -102,3 +105,17 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# keyboard 'fix'
+~/projects/temp/disable_devices.zsh
+
+eval "$(~/.rbenv/bin/rbenv init -)"
+
+export PATH="/home/santato/.local/bin:"$PATH
+
+# asdf
+. "$HOME/.asdf/asdf.sh"
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
+# my aliases
+alias gst='clear -x; git status; git log --oneline -4'
