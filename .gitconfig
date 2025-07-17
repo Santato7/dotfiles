@@ -1,0 +1,11 @@
+[user]
+	name = Santato7
+	email = santatolucas7@gmail.com
+[credential]
+	helper = store
+[url "git@github.com:Santato7/"]
+	insteadOf = "me:"
+[url "git@github.com:"]
+	insteadOf = "gh:"
+[url "git@github.com:repleadfy/"]
+	insteadOf = "rl:"
