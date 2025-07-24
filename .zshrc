@@ -109,8 +109,6 @@ source $ZSH/oh-my-zsh.sh
 # keyboard 'fix'
 ~/projects/temp/disable_devices.zsh
 
-eval "$(~/.rbenv/bin/rbenv init -)"
-
 export PATH="/home/santato/.local/bin:"$PATH
 
 # asdf
@@ -119,3 +117,9 @@ export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 # my aliases
 alias gst='clear -x; git status; git log --oneline -4'
+alias cursor='cursor --no-sandbox'
+alias mc='micro'
+
+eval "$(~/.rbenv/bin/rbenv init - zsh)"
+
+export PATH=$PATH:/usr/local/go/bin
