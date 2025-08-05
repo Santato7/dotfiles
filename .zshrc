@@ -112,8 +112,8 @@ source $ZSH/oh-my-zsh.sh
 export PATH="/home/santato/.local/bin:"$PATH
 
 # asdf
-. "$HOME/.asdf/asdf.sh"
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+# . "$HOME/.asdf/asdf.sh"
+# export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 # my aliases
 alias gst='clear -x; git status; git log --oneline -4'
@@ -122,4 +122,23 @@ alias mc='micro'
 
 eval "$(~/.rbenv/bin/rbenv init - zsh)"
 
-export PATH=$PATH:/usr/local/go/bin
+#golang
+export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:$HOME/go/bin"
+
+export PATH="$HOME/.local/share/ponyup/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+
+#asdf
+export ASDF_DATA_DIR="/home/santato/.asdf"
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
+
+
+# bun completions
+[ -s "/home/santato/.bun/_bun" ] && source "/home/santato/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+eval "$(zoxide init --cmd cd zsh)"

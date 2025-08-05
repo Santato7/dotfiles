@@ -1,0 +1,7 @@
+{
+    "Alt-/": "lua:comment.comment",
+    "Alt-R": "lua:initlua.ruby_run",
+    "Alt-T": "command:tree",
+    "CtrlUnderscore": "lua:comment.comment",
+    "F5": "lua:wc.wordCount"
+}

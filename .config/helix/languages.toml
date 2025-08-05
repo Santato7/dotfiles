@@ -1,0 +1,11 @@
+[language-server.pony-lsp]
+command = "pony-lsp stdio --stdio"
+
+[[language]]
+name = "ponylang"
+auto-format = false
+scope = "source.pony"
+injection-regex = "pony"
+file-types = ["pony"]
+indent = { tab-width = 2, unit = "  " }
+language-servers = [ "pony-lsp" ]
