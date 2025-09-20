@@ -9,6 +9,7 @@ My personal configuration files organized to be used with GNU Stow.
 - **Micro** - Lightweight text editor with useful plugins
 - **Hyprland** - Wayland compositor with dual monitor configurations
 - **Waybar** - Elegant and functional status bar
+- **UWSM** - Universal Wayland Session Manager configurations
 - **Git** - Basic configurations and useful aliases
 
 ## 🚀 Installation
@@ -45,6 +46,7 @@ dotfiles/
 ├── helix/         # Helix editor configurations
 ├── hyprland/      # Hyprland configurations
 ├── micro/         # Micro editor configurations
+├── uwsm/          # Universal Wayland Session Manager configurations
 ├── waybar/        # Waybar configurations
 └── zsh/           # Zsh and Oh My Zsh configurations
 ```
@@ -77,6 +79,13 @@ dotfiles/
 - Solarized theme
 - Plugins: filemanager, fzf, wc
 - Language-specific configurations
+
+### UWSM
+
+- Environment configuration for Wayland sessions
+- Default terminal (alacritty) and editor (code) settings
+- Omarchy integration with path management
+- Mise activation for development tools
 
 ## 🛠️ Management
 
