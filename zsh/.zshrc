@@ -114,7 +114,6 @@ export PATH="/home/santato/.local/bin:"$PATH
 
 # my aliases
 alias gst='clear -x; git status; git log --oneline -4'
-alias cursor='cursor --no-sandbox'
 alias mc='micro'
 
 #golang
