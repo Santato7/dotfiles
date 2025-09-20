@@ -115,6 +115,9 @@ export PATH="/home/santato/.local/bin:"$PATH
 # my aliases
 alias gst='clear -x; git status; git log --oneline -4'
 alias mc='micro'
+alias l='eza -lha --group-directories-first --icons=auto'
+alias lt='eza -a --tree --level=2 --long --icons --git'
+alias ff='fzf --preview '\''bat --style=numbers --color=always {}'\'''
 
 #golang
 export PATH="$PATH:/usr/local/go/bin"
