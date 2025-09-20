@@ -106,9 +106,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# keyboard 'fix'
-~/projects/temp/disable_devices.zsh
-
 export PATH="/home/santato/.local/bin:"$PATH
 
 # asdf
@@ -119,8 +116,6 @@ export PATH="/home/santato/.local/bin:"$PATH
 alias gst='clear -x; git status; git log --oneline -4'
 alias cursor='cursor --no-sandbox'
 alias mc='micro'
-
-eval "$(~/.rbenv/bin/rbenv init - zsh)"
 
 #golang
 export PATH="$PATH:/usr/local/go/bin"
@@ -133,6 +128,8 @@ export PATH="$HOME/bin:$PATH"
 export ASDF_DATA_DIR="/home/santato/.asdf"
 export PATH="$ASDF_DATA_DIR/shims:$PATH"
 
+#mise
+eval "$(/usr/bin/mise activate zsh)"
 
 # bun completions
 [ -s "/home/santato/.bun/_bun" ] && source "/home/santato/.bun/_bun"
@@ -142,3 +139,9 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 eval "$(zoxide init --cmd cd zsh)"
+
+# ssh agent
+# Inicia o keychain para gerenciar o ssh-agent no terminal
+if type keychain >/dev/null 2>&1; then
+  eval $(keychain --eval --quiet id_ed25519)
+fi
