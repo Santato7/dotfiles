@@ -7,5 +7,3 @@
 	insteadOf = "me:"
 [url "git@github.com:"]
 	insteadOf = "gh:"
-[url "git@github.com:repleadfy/"]
-	insteadOf = "rl:"
