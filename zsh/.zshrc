@@ -132,7 +132,7 @@ export ASDF_DATA_DIR="$HOME/.asdf"
 export PATH="$ASDF_DATA_DIR/shims:$PATH"
 
 #mise
-eval "$(/usr/bin/mise activate zsh)"
+eval "$(mise activate zsh)"
 
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
