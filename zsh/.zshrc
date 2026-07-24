@@ -106,7 +106,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export PATH="/home/santato/.local/bin:"$PATH
+export PATH="$HOME/.local/bin:$PATH"
 
 # asdf
 # . "$HOME/.asdf/asdf.sh"
@@ -128,14 +128,14 @@ export PATH="$HOME/.local/share/ponyup/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 
 #asdf
-export ASDF_DATA_DIR="/home/santato/.asdf"
+export ASDF_DATA_DIR="$HOME/.asdf"
 export PATH="$ASDF_DATA_DIR/shims:$PATH"
 
 #mise
 eval "$(/usr/bin/mise activate zsh)"
 
 # bun completions
-[ -s "/home/santato/.bun/_bun" ] && source "/home/santato/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
