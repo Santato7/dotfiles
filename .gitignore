@@ -1,2 +1,3 @@
 helix/.config/helix/runtime
 micro/.config/micro/buffers/
+.claude/settings.local.json
