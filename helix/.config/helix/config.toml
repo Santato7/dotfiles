@@ -6,7 +6,6 @@ line-number = "relative"
 rulers = [80]
 shell = ["zsh", "-c"]
 bufferline = "always"
-rainbow-brackets = true
 
 [editor.cursor-shape]
 insert = "bar"
