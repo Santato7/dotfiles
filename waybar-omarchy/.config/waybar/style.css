@@ -34,14 +34,18 @@
 #battery,
 #pulseaudio,
 #custom-omarchy,
-#custom-update,
-#language {
+#custom-update {
   min-width: 12px;
   margin: 0 7.5px;
 }
 
 #tray {
   margin-right: 16px;
+}
+
+#language {
+  min-width: 12px;
+  margin: 0 17px;
 }
 
 #bluetooth {
