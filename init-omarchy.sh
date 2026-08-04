@@ -7,7 +7,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 [[ -f "$HOME/.local/share/applications/Discord.desktop" ]] && omarchy webapp remove Discord
 
 # Packages
-omarchy pkg add discord keychain nano stow zsh
+omarchy pkg add discord keychain nano stow zsh micro
 
 # Dotfiles ready to be stowed (the *-omarchy packages need updating first).
 # Must run before any `omarchy install` below, since those create default
@@ -35,9 +35,13 @@ omarchy default browser chrome
 omarchy pkg present helix || omarchy install helix
 omarchy pkg present visual-studio-code-bin || omarchy install vscode
 omarchy default editor code
+command -v go >/dev/null || omarchy install dev-env go
+mise which ruby >/dev/null 2>&1 || omarchy install dev-env ruby
+mise which bun >/dev/null 2>&1 || omarchy install dev-env bun
 
 # Theme
-omarchy theme set Nord
+omarchy theme set Ristretto
+omarchy theme bg set "$HOME/.local/share/omarchy/themes/ristretto/backgrounds/3-industrial-moon.jpg"
 
 # SSH key (one per machine, not shared)
 SSH_KEY="$HOME/.ssh/id_ed25519"

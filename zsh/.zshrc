@@ -117,11 +117,9 @@ alias gst='clear -x; git status; git log --oneline -4'
 alias mc='micro'
 alias l='eza -lha --group-directories-first --icons=auto'
 alias lt='eza -a --tree --level=2 --long --icons --git'
-alias bat='batcat'
-alias ff='fzf --preview '\''batcat --style=numbers --color=always {}'\'''
+alias ff='fzf --preview '\''bat --style=numbers --color=always {}'\'''
 
 #golang
-export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:$HOME/go/bin"
 
 export PATH="$HOME/.local/share/ponyup/bin:$PATH"
