@@ -8,6 +8,7 @@
   "modules-center": ["clock", "custom/weather", "custom/update", "custom/voxtype", "custom/screenrecording-indicator", "custom/idle-indicator", "custom/notification-silencing-indicator"],
   "modules-right": [
     "group/tray-expander",
+    "hyprland/language",
     "bluetooth",
     "network",
     "pulseaudio",
@@ -110,6 +111,13 @@
       "warning": 20,
       "critical": 10
     }
+  },
+  "hyprland/language": {
+    "format": "{short}",
+    "format-us": "US",
+    "format-br": "BR",
+    "tooltip-format": "{long}",
+    "on-click": "hyprctl switchxkblayout all next"
   },
   "bluetooth": {
     "format": "",
