@@ -118,6 +118,7 @@ alias mc='micro'
 alias l='eza -lha --group-directories-first --icons=auto'
 alias lt='eza -a --tree --level=2 --long --icons --git'
 alias ff='fzf --preview '\''bat --style=numbers --color=always {}'\'''
+alias nest='npx @nestjs/cli'
 
 # Helix - rebuild from source (Ubuntu/WSL only; Omarchy manages it via pacman)
 update-helix() {
