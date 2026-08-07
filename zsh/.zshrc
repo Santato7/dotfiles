@@ -119,6 +119,17 @@ alias l='eza -lha --group-directories-first --icons=auto'
 alias lt='eza -a --tree --level=2 --long --icons --git'
 alias ff='fzf --preview '\''bat --style=numbers --color=always {}'\'''
 
+# Helix - rebuild from source (Ubuntu/WSL only; Omarchy manages it via pacman)
+update-helix() {
+  (cd "$HOME/.local/src/helix" && \
+    git pull && \
+    cargo install --path helix-term --locked --force && \
+    hx --grammar fetch && \
+    hx --grammar build && \
+    rm -rf "$HOME/.config/helix/runtime" && \
+    cp -r runtime "$HOME/.config/helix/runtime")
+}
+
 #golang
 export PATH="$PATH:$HOME/go/bin"
 
