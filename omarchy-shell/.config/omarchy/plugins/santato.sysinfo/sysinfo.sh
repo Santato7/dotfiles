@@ -36,6 +36,7 @@ mem=$(awk '
 
 temp=$(sensors 2>/dev/null | awk '
   /^Package id 0:/ { val = $4; gsub(/\+|°C/, "", val); print val; exit }
+  /^Tctl:/ { val = $2; gsub(/\+|°C/, "", val); print val; exit }
 ')
 
 if [[ -n "$temp" ]]; then
