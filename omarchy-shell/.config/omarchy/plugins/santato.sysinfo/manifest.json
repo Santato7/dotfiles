@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "santato.sysinfo",
+  "name": "System info",
+  "version": "1.0.0",
+  "author": "santato",
+  "description": "CPU %, RAM used/total, CPU temperature, and disk used/total",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "System info",
+    "description": "CPU %, RAM used/total, CPU temperature, and disk used/total",
+    "category": "System",
+    "allowMultiple": false
+  }
+}
