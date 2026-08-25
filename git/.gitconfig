@@ -9,5 +9,7 @@
 	insteadOf = "gh:"
 [init]
 	defaultBranch = main
-[includeIf "gitdir:~/projects/work/"]
-	path = ~/.gitconfig-work
+[includeIf "gitdir:~/projects/ds3/"]
+	path = ~/.gitconfig-ds3
+[core]
+	excludesfile = /home/santato/.gitignore_global
