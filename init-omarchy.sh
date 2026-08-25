@@ -15,13 +15,20 @@ omarchy pkg add discord keychain nano stow zsh micro
 # stowing first means our own configs win instead of getting shadowed.
 cd "$SCRIPT_DIR"
 
-# Some *-omarchy packages conflict with the plain config files Omarchy ships
-# by default. Back those up so stow can symlink instead (a no-op once the
-# target is already a symlink, so safe to rerun).
-for pkg in hyprland-omarchy omarchy-shell; do
+# Any package here can conflict with a plain config file Omarchy (or a prior
+# install) already dropped in place - e.g. ~/.gitconfig or ~/.zshrc on a
+# machine that has never had these dotfiles stowed before. Back those up so
+# stow can symlink instead (a no-op once the target is already a symlink, so
+# safe to rerun).
+for pkg in git helix micro zsh hyprland-omarchy omarchy-shell; do
   while IFS= read -r -d '' f; do
     target="$HOME/${f#"$SCRIPT_DIR/$pkg/"}"
-    if [[ -e "$target" && ! -L "$target" ]]; then
+    # Resolve symlinks (target itself, or an ancestor directory - stow links
+    # a whole directory when the target doesn't exist yet) so an
+    # already-linked-in file isn't mistaken for a plain file and moved out
+    # of the repo onto itself.
+    real_target="$(readlink -f -- "$target" 2>/dev/null || printf '%s' "$target")"
+    if [[ -e "$target" && "$real_target" != "$SCRIPT_DIR"/* ]]; then
       mv "$target" "$target.bak"
     fi
   done < <(find "$SCRIPT_DIR/$pkg" -type f -print0)
@@ -32,8 +39,8 @@ stow -R git helix micro zsh hyprland-omarchy omarchy-shell
 # Apps
 omarchy pkg present google-chrome || omarchy install browser chrome
 omarchy default browser chrome
-omarchy pkg present helix || omarchy install helix
-omarchy pkg present visual-studio-code-bin || omarchy install vscode
+omarchy pkg present helix || omarchy install editor helix
+omarchy pkg present visual-studio-code-bin || omarchy install editor vscode
 omarchy default editor code
 command -v go >/dev/null || omarchy install dev-env go
 mise which ruby >/dev/null 2>&1 || omarchy install dev-env ruby
