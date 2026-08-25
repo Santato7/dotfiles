@@ -122,8 +122,10 @@ alias nest='npx @nestjs/cli'
 
 # Work VPN (FortiClient + Microsoft SAML SSO, MFA number-matching in the
 # browser flow). --saml-login opens the browser for the SSO redirect instead
-# of prompting for a local username/password.
-alias vpn='sudo openfortivpn <VPN_HOST> --saml-login'
+# of prompting for a local username/password. --trusted-cert pins the
+# gateway's cert (Sectigo-issued, *.<company-domain>) so it isn't re-prompted
+# every connection.
+alias vpn='sudo openfortivpn <VPN_HOST> --saml-login --trusted-cert <VPN_CERT_SHA256>'
 alias vpnk='sudo killall openfortivpn'
 
 # Helix - rebuild from source (Ubuntu/WSL only; Omarchy manages it via pacman)
