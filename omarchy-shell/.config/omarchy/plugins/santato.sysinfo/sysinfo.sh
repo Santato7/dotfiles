@@ -24,4 +24,4 @@ temp=$(sensors 2>/dev/null | awk '
 
 disk=$(df -h / | awk 'NR==2 { print $3"/"$2 }')
 
-printf 'CPU %s  RAM %s  %s  Disk %s' "$cpu" "$mem" "$temp" "$disk"
+printf 'CPU %s  %s  RAM %s  Disk %s' "$cpu" "$temp" "$mem" "$disk"
