@@ -13,7 +13,7 @@ sudo apt-get install -y \
 # Dotfiles ready to be stowed. hyprland-omarchy/omarchy-shell are Omarchy/
 # Hyprland-specific and skipped here.
 cd "$SCRIPT_DIR"
-stow -R git helix micro tmux zsh
+stow -R git helix micro tmux zsh claude-code
 
 # bat ships as `batcat` on Debian/Ubuntu (name clash with another package) -
 # alias it as `bat` so the fzf preview alias in .zshrc works.

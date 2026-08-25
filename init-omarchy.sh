@@ -20,7 +20,7 @@ cd "$SCRIPT_DIR"
 # machine that has never had these dotfiles stowed before. Back those up so
 # stow can symlink instead (a no-op once the target is already a symlink, so
 # safe to rerun).
-for pkg in git helix micro zsh hyprland-omarchy omarchy-shell foot; do
+for pkg in git helix micro zsh hyprland-omarchy omarchy-shell foot claude-code; do
   while IFS= read -r -d '' f; do
     target="$HOME/${f#"$SCRIPT_DIR/$pkg/"}"
     # Resolve symlinks (target itself, or an ancestor directory - stow links
@@ -34,7 +34,7 @@ for pkg in git helix micro zsh hyprland-omarchy omarchy-shell foot; do
   done < <(find "$SCRIPT_DIR/$pkg" -type f -print0)
 done
 
-stow -R git helix micro zsh hyprland-omarchy omarchy-shell foot
+stow -R git helix micro zsh hyprland-omarchy omarchy-shell foot claude-code
 
 # Apps
 omarchy pkg present google-chrome || omarchy install browser chrome

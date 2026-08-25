@@ -1,0 +1,12 @@
+{
+  "attribution": {
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
+  },
+  "model": "sonnet",
+  "theme": "dark",
+  "editorMode": "normal",
+  "terminalProgressBarEnabled": true,
+  "agentPushNotifEnabled": true
+}
