@@ -120,6 +120,12 @@ alias lt='eza -a --tree --level=2 --long --icons --git'
 alias ff='fzf --preview '\''bat --style=numbers --color=always {}'\'''
 alias nest='npx @nestjs/cli'
 
+# Work VPN (FortiClient + Microsoft SAML SSO, MFA number-matching in the
+# browser flow). --saml-login opens the browser for the SSO redirect instead
+# of prompting for a local username/password.
+alias vpn='sudo openfortivpn <VPN_HOST> --saml-login'
+alias vpnk='sudo killall openfortivpn'
+
 # Helix - rebuild from source (Ubuntu/WSL only; Omarchy manages it via pacman)
 update-helix() {
   (cd "$HOME/.local/src/helix" && \
