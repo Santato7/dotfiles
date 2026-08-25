@@ -17,11 +17,13 @@ BarWidget {
     if (!statsProc.running) statsProc.running = true
   }
 
-  implicitWidth: button.implicitWidth
-  implicitHeight: button.implicitHeight
+  implicitWidth: button.width
+  implicitHeight: barSize
 
   Rectangle {
-    anchors.fill: parent
+    anchors.centerIn: parent
+    width: button.width
+    height: button.height
     radius: Math.max(2, Style.cornerRadius)
     color: "transparent"
     border.width: 1
@@ -47,12 +49,12 @@ BarWidget {
 
   WidgetButton {
     id: button
-    anchors.fill: parent
+    anchors.centerIn: parent
+    width: implicitWidth
+    height: Style.font.body + Style.space(6)
     bar: root.bar
     text: root.statsText
     horizontalMargin: 2
-    verticalPadding: 1
-    fixedHeight: Style.font.body + Style.space(6)
     tooltipText: "System info - click to open btop"
     onPressed: if (root.bar) root.bar.run("omarchy-launch-or-focus-tui btop")
   }
