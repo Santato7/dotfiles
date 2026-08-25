@@ -17,6 +17,7 @@ orange=$(color orange "#fb9a77")
 green=$(color green "#adda78")
 yellow=$(color yellow "#f9cc6c")
 red=$(color red "#fd6883")
+muted=$(color muted "#72696a")
 
 cpu=$(top -bn1 | awk '
   /^%?Cpu/ {
@@ -49,5 +50,7 @@ fi
 
 disk=$(df -h / | awk 'NR==2 { print $3"/"$2 }')
 
-printf '<font color="%s">CPU %s%%</font>  <font color="%s">%s</font>  <font color="%s">RAM %s</font>  <font color="%s">Disk %s</font>' \
-  "$cyan" "$cpu" "$temp_color" "$temp_display" "$magenta" "$mem" "$orange" "$disk"
+sep="<font color=\"$muted\"> | </font>"
+
+printf '<font color="%s">CPU %s%%</font>%s<font color="%s">%s</font>%s<font color="%s">RAM %s</font>%s<font color="%s">Disk %s</font>' \
+  "$cyan" "$cpu" "$sep" "$temp_color" "$temp_display" "$sep" "$magenta" "$mem" "$sep" "$orange" "$disk"

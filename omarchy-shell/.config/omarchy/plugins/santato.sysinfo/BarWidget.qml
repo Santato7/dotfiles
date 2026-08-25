@@ -17,8 +17,17 @@ BarWidget {
     if (!statsProc.running) statsProc.running = true
   }
 
-  implicitWidth: button.implicitWidth
+  implicitWidth: button.implicitWidth + Style.space(4)
   implicitHeight: button.implicitHeight
+
+  Rectangle {
+    anchors.fill: parent
+    anchors.margins: 1
+    radius: Math.max(2, Style.cornerRadius)
+    color: "transparent"
+    border.width: 1
+    border.color: Color.muted
+  }
 
   Process {
     id: statsProc
