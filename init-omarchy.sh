@@ -7,7 +7,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 [[ -f "$HOME/.local/share/applications/Discord.desktop" ]] && omarchy webapp remove Discord
 
 # Packages
-omarchy pkg add discord keychain nano stow zsh micro
+omarchy pkg add discord keychain nano stow zsh micro subversion
 
 # Dotfiles ready to be stowed (the *-omarchy packages need updating first).
 # Must run before any `omarchy install` below, since those create default
