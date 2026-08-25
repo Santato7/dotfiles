@@ -13,7 +13,8 @@ sudo apt-get install -y \
 # Dotfiles ready to be stowed. hyprland-omarchy/omarchy-shell are Omarchy/
 # Hyprland-specific and skipped here.
 cd "$SCRIPT_DIR"
-stow -R git helix micro tmux zsh
+mkdir -p -m 700 "$HOME/.ssh"
+stow -R git helix micro tmux zsh claude-code ssh
 
 # bat ships as `batcat` on Debian/Ubuntu (name clash with another package) -
 # alias it as `bat` so the fzf preview alias in .zshrc works.
@@ -94,6 +95,16 @@ if [[ ! -f "$SSH_KEY" ]]; then
   echo ""
   echo "New SSH key generated. Add the public key to GitHub/GitLab:"
   cat "$SSH_KEY.pub"
+  echo ""
+fi
+
+# SSH key for the ds3 GitHub identity (used via the 'ds3' Host alias)
+SSH_KEY_DS3="$HOME/.ssh/id_ed25519_ds3"
+if [[ ! -f "$SSH_KEY_DS3" ]]; then
+  ssh-keygen -t ed25519 -C "lucas.santato@ds3digital.com-$(hostname)" -f "$SSH_KEY_DS3"
+  echo ""
+  echo "New ds3 SSH key generated. Add the public key to GitHub (ds3 org):"
+  cat "$SSH_KEY_DS3.pub"
   echo ""
 fi
 
