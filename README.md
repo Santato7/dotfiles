@@ -11,7 +11,7 @@ My personal configuration files, managed with GNU Stow, for Omarchy (Arch/Hyprla
 - **SSH** - `~/.ssh/config` host aliases (`github.com`, `ds3`)
 - **Tmux** - Terminal multiplexer config
 - **Claude Code** - Global `CLAUDE.md`, `settings.json`, and a custom skill
-- **Hyprland-Omarchy** - Wayland compositor config (Quattro-era Lua: `monitors.lua`, `input.lua`, `bindings.lua`, `looknfeel.lua`)
+- **Hyprland-Omarchy** - Wayland compositor config (Quattro-era Lua: `monitors.lua`, `input.lua`, `looknfeel.lua`)
 - **Omarchy-Shell** - Bar layout, widgets, idle/lock timing, and a custom `santato.sysinfo` bar plugin (CPU/RAM/temp/disk)
 - **Foot** - Terminal config (Alacritty-style Ctrl+Shift+C/V clipboard bindings)
 
@@ -91,7 +91,7 @@ dotfiles/
 ### Hyprland (Omarchy)
 
 - Per-branch monitor topology (see Branches above)
-- Custom bindings only for what actually diverges from Omarchy's own defaults (`Super+Shift+W` → Typora, `Super+Alt+Return` → named tmux session)
+- No custom keybindings tracked - Quattro's own defaults (`bindings.lua`) already cover everything that used to be a personal override, so that file isn't stowed; `omarchy menu keybindings --print` shows what's active
 - Workspace gaps, Discord/Spotify placement, and `persistent = true` on all 10 workspaces (so the bar shows 1-0) live in `looknfeel.lua`, shared across branches
 
 ### Micro
@@ -113,5 +113,6 @@ dotfiles/
 ## 📝 Notes
 
 - Company-specific secrets (VPN host/cert, etc.) live in `~/.zshrc.local`, which is **not** tracked - keeps that out of this public repo
+- `init-omarchy.sh` also renames Omarchy's default `~/Projects` to lowercase `~/projects`, matching what git's `ds3` `includeIf` and the ssh config expect
 - `init-omarchy.sh` and `init-ubuntu-wsl.sh` are idempotent: rerunning either only touches what's actually missing or out of date
 - After editing anything under `omarchy-shell/.config/omarchy/plugins/`, a brand new plugin directory needs `omarchy restart shell` once (hot-reload only reliably picks up edits to already-loaded plugin files)
