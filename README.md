@@ -1,38 +1,26 @@
 # Dotfiles
 
-My personal configuration files organized to be used with GNU Stow.
+My personal configuration files, managed with GNU Stow, for Omarchy (Arch/Hyprland) and Ubuntu/WSL.
 
 ## 📋 Included Configurations
 
-- **Zsh** - Shell config## 🔧 Included Scripts
-
-- **`init-omarchy.sh`** - Initialization script that removes Discord webapp and installs necessary dependencies
-
-## 📝 Notes
-
-- All configurations are organized following GNU Stow structure
-- Files are symbolically linked to their appropriate locations
-- Backup your existing configurations before applying these dotfiles
-- Omarchy configurations require Omarchy system installed
-- Some configurations may need system-specific adjustments
-- The Headline theme includes SSH, Git, and development tools integration
-
-## 🎨 Headline Theme
-
-The custom theme includes:
-
-- Visual indicators for Git status
-- Custom user and host information
-- Virtual environment support
-- Special characters and Nerd Font icons
-- Customizable clock in promptOh My Zsh and custom Headline theme
-- **Helix** - Modern text editor with optimized configurations
-- **Micro** - Lightweight text editor with useful plugins
-- **Hyprland-Omarchy** - Wayland compositor configured for Omarchy (Quattro Lua config)
-- **Omarchy-Shell** - Bar layout, widgets, and idle/lock timing for the Omarchy shell (Quickshell)
+- **Zsh** - Shell config, Oh My Zsh, custom Headline theme
+- **Helix** - Modern text editor
+- **Micro** - Lightweight text editor with plugins
+- **Git** - Config, aliases, and a `ds3` work identity (`includeIf` on `~/projects/ds3/`)
+- **SSH** - `~/.ssh/config` host aliases (`github.com`, `ds3`)
+- **Tmux** - Terminal multiplexer config
+- **Claude Code** - Global `CLAUDE.md`, `settings.json`, and a custom skill
+- **Hyprland-Omarchy** - Wayland compositor config (Quattro-era Lua: `monitors.lua`, `input.lua`, `bindings.lua`, `looknfeel.lua`)
+- **Omarchy-Shell** - Bar layout, widgets, idle/lock timing, and a custom `santato.sysinfo` bar plugin (CPU/RAM/temp/disk)
 - **Foot** - Terminal config (Alacritty-style Ctrl+Shift+C/V clipboard bindings)
-- **Oh My Zsh** - Custom Headline theme and configurations
-- **Git** - Basic configurations and useful aliases
+
+## 🌿 Branches
+
+- **`main`** - Desktop: dual monitor (DP-3 + HDMI-A-1), AMD Ryzen 7 7800X3D
+- **`notebook`** - Laptop: single panel (`eDP-1`), Intel CPU
+
+The two branches only diverge on `hyprland-omarchy/.config/hypr/monitors.lua` (monitor topology and workspace-to-monitor assignment). Everything else is shared and kept in sync by merging `main` into `notebook`.
 
 ## 🚀 Installation
 
@@ -47,42 +35,43 @@ sudo apt install stow  # Ubuntu/Debian
 ### Cloning and applying configurations
 
 ```bash
-# Clone the repository
-git clone https://github.com/santato7/dotfiles.git
+git clone git@github.com:Santato7/dotfiles.git
 cd dotfiles
 
-# Apply all configurations
+# Apply everything
 stow */
 
-# Or apply specific configurations
-stow zsh
-stow helix
-stow hyprland-omarchy
-stow omarchy-shell
-stow foot
-stow micro
+# Or specific packages
+stow zsh helix git ssh
+stow hyprland-omarchy omarchy-shell foot   # Omarchy only
 ```
 
-### Omarchy Initialization (Optional)
+### Initialization scripts
 
 ```bash
-# Run the Omarchy initialization script
-./init-omarchy.sh
+./init-omarchy.sh       # Omarchy: packages, stow, SSH keys, theme, shell, Oh My Zsh
+./init-ubuntu-wsl.sh    # Ubuntu/WSL: subset of the above, no Hyprland/Omarchy packages
 ```
+
+Both scripts back up any plain (non-symlink) file already at a stow target before linking, so they're safe to rerun.
 
 ## 🗂️ Structure
 
 ```text
 dotfiles/
+├── claude-code/        # Claude Code global config and skills
 ├── foot/               # Foot terminal configuration
-├── git/                # Git configurations
-├── helix/              # Helix editor configurations
-├── hyprland-omarchy/   # Hyprland configurations for Omarchy (Quattro Lua config)
-├── micro/              # Micro editor configurations
-├── oh-my-zsh/          # Custom Headline theme and configurations
-├── omarchy-shell/      # Omarchy shell (bar/idle) configuration
-├── zsh/                # Zsh configurations
+├── git/                # Git config, aliases, ds3 work identity
+├── helix/              # Helix editor configuration
+├── hyprland-omarchy/   # Hyprland config for Omarchy (Quattro Lua)
+├── micro/              # Micro editor configuration
+├── oh-my-zsh/          # Custom Headline theme
+├── omarchy-shell/      # Omarchy shell (bar/idle/plugins) configuration
+├── ssh/                # SSH config (host aliases)
+├── tmux/               # Tmux configuration
+├── zsh/                # Zsh configuration
 ├── init-omarchy.sh     # Omarchy initialization script
+├── init-ubuntu-wsl.sh  # Ubuntu/WSL initialization script
 └── README.md           # This file
 ```
 
@@ -91,71 +80,38 @@ dotfiles/
 ### Zsh
 
 - Oh My Zsh with custom **Headline** theme
-- Plugins: git, asdf
-- Useful aliases like `gst` for git status
-- Integration with tools like zoxide, mise, bun, keychain
+- Aliases like `gst` for git status
+- Integration with zoxide, mise, bun, keychain
+- Sources `~/.zshrc.local` if present (untracked - see Notes)
 
 ### Helix
 
-- Starlight theme
-- Relative line numbering
-- Integration with lf (file manager)
-- Custom keybindings for buffer navigation
+- Starlight theme, relative line numbers, `lf` integration
 
 ### Hyprland (Omarchy)
 
-- Optimized dual monitor configuration (DP-3 + HDMI-A-1)
-- Workspaces organized by monitor
-- Custom bindings for applications not already covered by Omarchy's defaults
-- Full Omarchy integration (Quattro-era Lua config: `monitors.lua`, `input.lua`, `bindings.lua`)
-- Support for web apps and native Discord
+- Per-branch monitor topology (see Branches above)
+- Custom bindings only for what actually diverges from Omarchy's own defaults (`Super+Shift+W` → Typora, `Super+Alt+Return` → named tmux session)
+- Workspace gaps, Discord/Spotify placement, and `persistent = true` on all 10 workspaces (so the bar shows 1-0) live in `looknfeel.lua`, shared across branches
 
 ### Micro
 
-- Solarized theme
-- Plugins: filemanager, fzf, wc
-- Language-specific configurations
-- Custom keybindings
+- Solarized theme, filemanager/fzf/wc plugins
 
 ### Omarchy Shell
 
-- Bar layout (menu, workspaces, clock, weather, tray, network, audio, power, etc.)
+- Bar layout (menu, workspaces, clock as `dd/MM/yyyy HH:mm`, weather, tray, network, audio, power, etc.)
 - Idle/lock timing (`~/.config/omarchy/shell.json`)
+- `santato.sysinfo`: custom bar plugin showing CPU %, temperature (Intel and AMD/k10temp), RAM, and disk usage, colored from the active theme's palette
 - Runs on Quickshell, replacing Waybar/hypridle from pre-Quattro Omarchy
 
-## 🛠️ Management
+### Git / SSH
 
-### Adding new configurations
+- Personal identity by default; `ds3` work identity auto-applied under `~/projects/ds3/`
+- Two SSH keys (`id_ed25519`, `id_ed25519_ds3`), selected via the `ds3` Host alias
 
-```bash
-# Move existing configuration to repository
-mv ~/.config/app dotfiles/app/.config/
-cd dotfiles
-stow app
-```
+## 📝 Notes
 
-### Removing configurations
-
-```bash
-# Remove symlinks
-stow -D zsh
-```
-
-### Updating configurations
-
-```bash
-cd dotfiles
-git pull
-stow */  # Reapply all configurations
-```
-
-## � Included Scripts
-
-- **`init-omarchy.sh`** - Initialization script that removes Discord webapp and installs necessary dependencies
-
-## �📝 Notes
-
-- All configurations are organized following GNU Stow structure
-- Files are symbolically linked to their appropriate locations
-- Backup your existing configurations before applying these dotfiles
-- Some configurations may need system-specific adjustments
+- Company-specific secrets (VPN host/cert, etc.) live in `~/.zshrc.local`, which is **not** tracked - keeps that out of this public repo
+- `init-omarchy.sh` and `init-ubuntu-wsl.sh` are idempotent: rerunning either only touches what's actually missing or out of date
+- After editing anything under `omarchy-shell/.config/omarchy/plugins/`, a brand new plugin directory needs `omarchy restart shell` once (hot-reload only reliably picks up edits to already-loaded plugin files)
