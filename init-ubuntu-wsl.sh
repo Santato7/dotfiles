@@ -10,7 +10,7 @@ sudo apt-get install -y \
   build-essential curl git stow zsh micro nano keychain tmux \
   ca-certificates gnupg wget fzf bat
 
-# Dotfiles ready to be stowed. hyprland-omarchy/waybar-omarchy are Omarchy/
+# Dotfiles ready to be stowed. hyprland-omarchy/omarchy-shell are Omarchy/
 # Hyprland-specific and skipped here.
 cd "$SCRIPT_DIR"
 stow -R git helix micro tmux zsh

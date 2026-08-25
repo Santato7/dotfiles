@@ -18,7 +18,7 @@ cd "$SCRIPT_DIR"
 # Some *-omarchy packages conflict with the plain config files Omarchy ships
 # by default. Back those up so stow can symlink instead (a no-op once the
 # target is already a symlink, so safe to rerun).
-for pkg in hyprland-omarchy waybar-omarchy; do
+for pkg in hyprland-omarchy omarchy-shell; do
   while IFS= read -r -d '' f; do
     target="$HOME/${f#"$SCRIPT_DIR/$pkg/"}"
     if [[ -e "$target" && ! -L "$target" ]]; then
@@ -27,7 +27,7 @@ for pkg in hyprland-omarchy waybar-omarchy; do
   done < <(find "$SCRIPT_DIR/$pkg" -type f -print0)
 done
 
-stow -R git helix micro zsh hyprland-omarchy waybar-omarchy
+stow -R git helix micro zsh hyprland-omarchy omarchy-shell
 
 # Apps
 omarchy pkg present google-chrome || omarchy install browser chrome

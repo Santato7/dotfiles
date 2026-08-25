@@ -28,9 +28,8 @@ The custom theme includes:
 - Customizable clock in promptOh My Zsh and custom Headline theme
 - **Helix** - Modern text editor with optimized configurations
 - **Micro** - Lightweight text editor with useful plugins
-- **Hyprland-Omarchy** - Wayland compositor configured for Omarchy
-- **Waybar-Omarchy** - Status bar integrated with Omarchy theme
-- **UWSM-Omarchy** - Universal Wayland Session Manager for Omarchy
+- **Hyprland-Omarchy** - Wayland compositor configured for Omarchy (Quattro Lua config)
+- **Omarchy-Shell** - Bar layout, widgets, and idle/lock timing for the Omarchy shell (Quickshell)
 - **Oh My Zsh** - Custom Headline theme and configurations
 - **Git** - Basic configurations and useful aliases
 
@@ -58,6 +57,7 @@ stow */
 stow zsh
 stow helix
 stow hyprland-omarchy
+stow omarchy-shell
 stow micro
 ```
 
@@ -74,11 +74,10 @@ stow micro
 dotfiles/
 ├── git/                # Git configurations
 ├── helix/              # Helix editor configurations
-├── hyprland-omarchy/   # Hyprland configurations for Omarchy
+├── hyprland-omarchy/   # Hyprland configurations for Omarchy (Quattro Lua config)
 ├── micro/              # Micro editor configurations
 ├── oh-my-zsh/          # Custom Headline theme and configurations
-├── uwsm-omarchy/       # UWSM configurations for Omarchy
-├── waybar-omarchy/     # Waybar configurations for Omarchy
+├── omarchy-shell/      # Omarchy shell (bar/idle) configuration
 ├── zsh/                # Zsh configurations
 ├── init-omarchy.sh     # Omarchy initialization script
 └── README.md           # This file
@@ -102,10 +101,10 @@ dotfiles/
 
 ### Hyprland (Omarchy)
 
-- Optimized dual monitor configuration (DP-1 + DVI-D-1)
+- Optimized dual monitor configuration (DP-3 + HDMI-A-1)
 - Workspaces organized by monitor
-- Custom bindings for applications
-- Full Omarchy integration
+- Custom bindings for applications not already covered by Omarchy's defaults
+- Full Omarchy integration (Quattro-era Lua config: `monitors.lua`, `input.lua`, `bindings.lua`)
 - Support for web apps and native Discord
 
 ### Micro
@@ -115,19 +114,11 @@ dotfiles/
 - Language-specific configurations
 - Custom keybindings
 
-### UWSM (Omarchy)
+### Omarchy Shell
 
-- Environment configuration for Wayland sessions
-- Default terminal (alacritty) and editor (code) settings
-- Omarchy integration with path management
-- Automatic mise activation
-
-### Waybar (Omarchy)
-
-- Interface integrated with Omarchy theme
-- Custom indicators and widgets
-- System monitoring support
-- Integrated Omarchy menu
+- Bar layout (menu, workspaces, clock, weather, tray, network, audio, power, etc.)
+- Idle/lock timing (`~/.config/omarchy/shell.json`)
+- Runs on Quickshell, replacing Waybar/hypridle from pre-Quattro Omarchy
 
 ## 🛠️ Management
 
