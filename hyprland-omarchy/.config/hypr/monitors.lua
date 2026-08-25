@@ -7,12 +7,15 @@ hl.env("GDK_SCALE", "1")
 hl.monitor({ output = "DP-3", mode = "1920x1080@143.98", position = "0x0", scale = 1 })
 hl.monitor({ output = "HDMI-A-1", mode = "1366x768@59.79", position = "1920x0", scale = 1 })
 
+-- persistent = true keeps every workspace instantiated even when empty, so
+-- the bar's workspace indicator shows 1-0 instead of just 1-5 (the widget
+-- only shows a workspace above 5 once it actually exists).
 for workspace = 1, 5 do
-  hl.workspace_rule({ workspace = tostring(workspace), monitor = "DP-3", default = true })
+  hl.workspace_rule({ workspace = tostring(workspace), monitor = "DP-3", default = true, persistent = true })
 end
 
 for workspace = 6, 10 do
-  hl.workspace_rule({ workspace = tostring(workspace), monitor = "HDMI-A-1", default = true })
+  hl.workspace_rule({ workspace = tostring(workspace), monitor = "HDMI-A-1", default = true, persistent = true })
 end
 
 hl.workspace_rule({ workspace = "r[1-10]", gaps_out = 6, gaps_in = 1 })
