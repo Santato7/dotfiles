@@ -14,13 +14,14 @@ omarchy pkg add discord keychain nano stow zsh micro
 # configs (helix, oh-my-zsh) only when the target file doesn't exist yet -
 # stowing first means our own configs win instead of getting shadowed.
 cd "$SCRIPT_DIR"
+mkdir -p -m 700 "$HOME/.ssh"
 
 # Any package here can conflict with a plain config file Omarchy (or a prior
 # install) already dropped in place - e.g. ~/.gitconfig or ~/.zshrc on a
 # machine that has never had these dotfiles stowed before. Back those up so
 # stow can symlink instead (a no-op once the target is already a symlink, so
 # safe to rerun).
-for pkg in git helix micro zsh hyprland-omarchy omarchy-shell foot claude-code; do
+for pkg in git helix micro zsh hyprland-omarchy omarchy-shell foot claude-code ssh; do
   while IFS= read -r -d '' f; do
     target="$HOME/${f#"$SCRIPT_DIR/$pkg/"}"
     # Resolve symlinks (target itself, or an ancestor directory - stow links
@@ -34,7 +35,7 @@ for pkg in git helix micro zsh hyprland-omarchy omarchy-shell foot claude-code; 
   done < <(find "$SCRIPT_DIR/$pkg" -type f -print0)
 done
 
-stow -R git helix micro zsh hyprland-omarchy omarchy-shell foot claude-code
+stow -R git helix micro zsh hyprland-omarchy omarchy-shell foot claude-code ssh
 
 # Apps
 omarchy pkg present google-chrome || omarchy install browser chrome
@@ -57,6 +58,16 @@ if [[ ! -f "$SSH_KEY" ]]; then
   echo ""
   echo "New SSH key generated. Add the public key to GitHub/GitLab:"
   cat "$SSH_KEY.pub"
+  echo ""
+fi
+
+# SSH key for the ds3 GitHub identity (used via the 'ds3' Host alias)
+SSH_KEY_DS3="$HOME/.ssh/id_ed25519_ds3"
+if [[ ! -f "$SSH_KEY_DS3" ]]; then
+  ssh-keygen -t ed25519 -C "lucas.santato@ds3digital.com-$(hostname)" -f "$SSH_KEY_DS3"
+  echo ""
+  echo "New ds3 SSH key generated. Add the public key to GitHub (ds3 org):"
+  cat "$SSH_KEY_DS3.pub"
   echo ""
 fi
 
