@@ -6,6 +6,16 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # Remove preinstalled web apps we don't want
 [[ -f "$HOME/.local/share/applications/Discord.desktop" ]] && omarchy webapp remove Discord
 
+# Omarchy defaults to ~/Projects; rename to lowercase so it matches
+# ~/projects/ds3 (git's includeIf and the ssh config expect that path).
+if [[ -d "$HOME/Projects" && ! -e "$HOME/projects" ]]; then
+  mv "$HOME/Projects" "$HOME/projects"
+fi
+mkdir -p "$HOME/projects"
+if [[ -f "$HOME/.config/user-dirs.dirs" ]]; then
+  sed -i 's|XDG_PROJECTS_DIR="$HOME/Projects"|XDG_PROJECTS_DIR="$HOME/projects"|' "$HOME/.config/user-dirs.dirs"
+fi
+
 # Packages
 omarchy pkg add discord keychain nano stow zsh micro subversion openfortivpn
 
