@@ -50,8 +50,8 @@ BarWidget {
     anchors.fill: parent
     bar: root.bar
     text: root.statsText
-    horizontalMargin: 6
-    verticalPadding: 4
+    horizontalMargin: 2
+    verticalPadding: 1
     tooltipText: "System info - click to open btop"
     onPressed: if (root.bar) root.bar.run("omarchy-launch-or-focus-tui btop")
   }
