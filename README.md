@@ -30,6 +30,7 @@ The custom theme includes:
 - **Micro** - Lightweight text editor with useful plugins
 - **Hyprland-Omarchy** - Wayland compositor configured for Omarchy (Quattro Lua config)
 - **Omarchy-Shell** - Bar layout, widgets, and idle/lock timing for the Omarchy shell (Quickshell)
+- **Foot** - Terminal config (Alacritty-style Ctrl+Shift+C/V clipboard bindings)
 - **Oh My Zsh** - Custom Headline theme and configurations
 - **Git** - Basic configurations and useful aliases
 
@@ -58,6 +59,7 @@ stow zsh
 stow helix
 stow hyprland-omarchy
 stow omarchy-shell
+stow foot
 stow micro
 ```
 
@@ -72,6 +74,7 @@ stow micro
 
 ```text
 dotfiles/
+├── foot/               # Foot terminal configuration
 ├── git/                # Git configurations
 ├── helix/              # Helix editor configurations
 ├── hyprland-omarchy/   # Hyprland configurations for Omarchy (Quattro Lua config)
