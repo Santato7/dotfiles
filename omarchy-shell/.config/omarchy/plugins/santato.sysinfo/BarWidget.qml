@@ -52,6 +52,7 @@ BarWidget {
     text: root.statsText
     horizontalMargin: 2
     verticalPadding: 1
+    fixedHeight: Style.font.body + Style.space(6)
     tooltipText: "System info - click to open btop"
     onPressed: if (root.bar) root.bar.run("omarchy-launch-or-focus-tui btop")
   }
