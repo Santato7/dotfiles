@@ -16,4 +16,4 @@ o.window({ float = false, workspace = "f[1]" }, { border_size = 0, rounding = 0 
 
 o.window({ class = "discord" }, { workspace = "9" })
 o.window({ class = "Spotify", title = "Spotify Premium" }, { opacity = "0.7 override" })
-o.window({ class = "Spotify" }, { workspace = "10" })
+o.window({ title = "Omarchy Spotify" }, { workspace = "10" })

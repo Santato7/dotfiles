@@ -7,7 +7,7 @@
           "id": "omarchy.indicators"
         },
         {
-          "format": "dd/MM/yyyy HH:mm",
+          "format": "dddd d MMMM HH:mm",
           "formatAlt": "d MMMM 'W'ww yyyy",
           "id": "omarchy.clock",
           "verticalFormat": "HH\n—\nmm"
@@ -32,10 +32,24 @@
       ],
       "right": [
         {
+          "id": "santato.sysinfo"
+        },
+        {
           "id": "omarchy.tray"
         },
         {
-          "id": "santato.sysinfo"
+          "id": "quickshell.spotify",
+          "deviceName": "Omarchy Spotify",
+          "idleShutdownMinutes": 15,
+          "showMiniPlayer": "On",
+          "shortcutPlayer": "Omarchy Music app",
+          "shortcutHints": "On",
+          "showTrackTitle": "On",
+          "showArtistName": "On",
+          "scrollBarText": "On",
+          "scrollSpeed": "1",
+          "maxBarTextWidth": "200",
+          "audioQuality": "320 kbps"
         },
         {
           "id": "omarchy.agents"
@@ -57,12 +71,12 @@
         }
       ]
     },
-    "position": "top",
-    "transparent": false
+    "position": "bottom",
+    "transparent": true
   },
   "idle": {
     "lock": 3600,
-    "screensaver": 300
+    "screensaver": 600
   },
   "plugins": [],
   "version": 1

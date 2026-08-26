@@ -59,7 +59,6 @@ mise which bun >/dev/null 2>&1 || omarchy install dev-env bun
 
 # Theme
 omarchy theme set Ristretto
-omarchy theme bg set "$HOME/.local/share/omarchy/themes/ristretto/backgrounds/3-industrial-moon.jpg"
 
 # SSH key (one per machine, not shared)
 SSH_KEY="$HOME/.ssh/id_ed25519"
