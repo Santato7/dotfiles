@@ -3,6 +3,10 @@
 # for the santato.sysinfo bar widget. Colored with the active Omarchy theme's
 # palette (~/.local/state/omarchy/current/theme/colors.toml) so it follows
 # theme switches; falls back to Ristretto's colors if that file is missing.
+#
+# Output: one "color<TAB>text" segment per line. BarWidget.qml renders each
+# line as its own colored Text (the bar's Text no longer supports inline
+# HTML markup as of omarchy 4.0.3).
 
 theme_colors="$HOME/.local/state/omarchy/current/theme/colors.toml"
 color() {
@@ -51,7 +55,5 @@ fi
 
 disk=$(df -h / | awk 'NR==2 { print $3"/"$2 }')
 
-sep="<font color=\"$muted\"> | </font>"
-
-printf '<font color="%s">CPU %s%%</font>%s<font color="%s">%s</font>%s<font color="%s">RAM %s</font>%s<font color="%s">Disk %s</font>' \
-  "$cyan" "$cpu" "$sep" "$temp_color" "$temp_display" "$sep" "$magenta" "$mem" "$sep" "$orange" "$disk"
+printf '%s\tCPU %s%%\n%s\t | \n%s\t%s\n%s\t | \n%s\tRAM %s\n%s\t | \n%s\tDisk %s\n' \
+  "$cyan" "$cpu" "$muted" "$temp_color" "$temp_display" "$muted" "$magenta" "$mem" "$muted" "$orange" "$disk"
