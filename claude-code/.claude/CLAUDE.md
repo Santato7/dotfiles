@@ -12,3 +12,9 @@ Exemplo do erro cometido: numa descrição de PR, escrevi "aplicado direto no ba
 Lucas" — errado, porque soa como narração de terceiros sobre a ação do usuário. O certo
 seria escrever da perspectiva de quem está abrindo o PR (ex: "apliquei direto no banco"),
 sem se referir ao usuário pelo nome nem à IA como agente separado.
+
+## Travessão em texto pra usar em outro lugar
+
+Nunca usar travessão (—) em mensagens de commit, descrições de PR, comentários de
+código/review, comentários de Jira ou qualquer outro texto que o usuário vá copiar e usar
+em outro lugar. Preferir vírgula, ponto, parênteses ou reformular a frase em duas.
